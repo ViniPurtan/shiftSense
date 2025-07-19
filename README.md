@@ -72,7 +72,7 @@ The application uses environment-specific configurations. Check `pubspec.yaml` f
 
 ## 📄 License
 
-This project is developed by Nayar Systems for internal team management.
+This project is developed by Vinicius testing purposes only & for internal team management.
 
 ---
 
