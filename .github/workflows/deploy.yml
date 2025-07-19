@@ -14,12 +14,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
+    - name: Setup Flutter SDK
+      uses: flutter-actions/setup-flutter@v3
       with:
-        flutter-version: '3.24.3'
-        channel: 'stable'
-        cache: true
+        channel: stable
+        version: 3.24.3
+        
+    - name: Verify Flutter installation
+      run: |
+        flutter --version
+        flutter doctor
         
     - name: Install dependencies
       run: flutter pub get
@@ -41,5 +45,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
-        # Forzar push para sobrescribir contenido anterior
         force_orphan: true
