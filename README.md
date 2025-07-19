@@ -52,7 +52,8 @@ chmod +x build_check.sh
 
 ## 🌐 Live Demo
 
-Visit the live application at: [https://vinipurtan.github.io/shiftSense/](https://vinipurtan.github.io/shiftSense/)
+Visit the live application at: [Shift Sense](https://vinipurtan.github.io/shiftSense/)
+Previous Live Demo at: [Shift Sense Demo App](https://0zadbuks1yk84tzmzny0.share.dreamflow.app)
 
 ## 📋 Project Structure
 
