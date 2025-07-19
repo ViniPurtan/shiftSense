@@ -56,3 +56,26 @@ app.*.map.json
 # Build outputs (IMPORTANT: No ignorar build/web para el workflow)
 build/
 !build/web/
+
+# 🔒 SECURITY: Environment and secret files
+.env
+.env.local
+.env.development
+.env.production
+.env.*
+**/secrets/
+**/config/*_secrets.*
+**/config/secret_*
+**/.secrets
+credentials.json
+service-account.json
+firebase-adminsdk-*.json
+*.pem
+*.key
+*.p12
+*.keystore
+key.properties
+
+# Supabase secrets (if using separate config files)
+**/config/supabase_secrets.*
+**/config/production_config.*
