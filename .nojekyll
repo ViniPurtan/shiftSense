@@ -1,0 +1,2 @@
+# Este archivo evita que GitHub Pages procese el sitio con Jekyll
+# Flutter genera archivos que empiezan con _ y Jekyll los ignora por defecto
