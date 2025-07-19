@@ -1,10 +1,8 @@
-// En lib/config/supabase_config.dart
 class SupabaseConfig {
   static const String supabaseUrl = 'https://jqyvdhqirhdfpztaudep.supabase.co';
   
-  // Usa la "Publishable key" aquí
+  // Usa la "Publishable key" aquí - Segura para aplicaciones cliente
   static const String supabaseAnonKey = 'sb_publishable_GIW5247CoVnpkgZmom_wPw_1LkfowqA';
-}
   
   // ⚠️ IMPORTANTE: Service Role Key removida por seguridad
   // La Service Role Key NUNCA debe estar en el código del cliente
