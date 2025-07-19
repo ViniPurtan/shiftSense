@@ -1,31 +1,44 @@
-name: Deploy to GitHub Pages
+name: Deploy Flutter Web to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout source
+    - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Set up Flutter
+      
+    - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        channel: stable
-
+        flutter-version: '3.22.0'
+        cache: true
+        
     - name: Install dependencies
       run: flutter pub get
-
-    - name: Build web
-      run: flutter build web --release
-
+      
+    - name: Build web application
+      run: flutter build web --release --base-href "/shiftSense/"
+      
+    - name: List build/web contents (debug)
+      run: |
+        echo "Verificando contenido de build/web:"
+        ls -la ./build/web/
+        echo "Archivos principales:"
+        ls -la ./build/web/*.html || echo "No hay archivos HTML"
+        ls -la ./build/web/*.js || echo "No hay archivos JS"
+        
     - name: Deploy to GitHub Pages
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
+        # Forzar push para sobrescribir contenido anterior
+        force_orphan: true
