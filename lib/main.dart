@@ -12,12 +12,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ShiftSense',
+      title: 'ShiftSense - Gestión de Turnos',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       home: const HomePage(),
+      // Configuración para web
+      onGenerateRoute: (settings) {
+        // Maneja todas las rutas desconocidas dirigiéndolas a la página principal
+        return MaterialPageRoute(
+          builder: (context) => const HomePage(),
+          settings: settings,
+        );
+      },
+      onUnknownRoute: (settings) {
+        // Fallback para rutas no encontradas
+        return MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        );
+      },
     );
   }
 }
