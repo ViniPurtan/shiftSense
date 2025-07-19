@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch: # Permite ejecución manual
 
 jobs:
   build-and-deploy:
@@ -53,15 +54,16 @@ jobs:
         
     - name: List build/web contents (debug)
       run: |
-        echo "Verificando contenido de build/web:"
+        echo "🔍 Verificando contenido de build/web:"
         ls -la ./build/web/
-        echo "Archivos principales:"
+        echo "📄 Archivos principales:"
         ls -la ./build/web/*.html || echo "No hay archivos HTML"
         find ./build/web -name "*.js" -o -name "*.wasm" | head -10 || echo "No hay archivos JS/WASM"
-        echo "Contenido de index.html (primeras 30 líneas):"
+        echo "📝 Contenido de index.html (primeras 30 líneas):"
         head -30 ./build/web/index.html || echo "No se puede leer index.html"
-        echo "Tamaño de archivos:"
+        echo "📊 Tamaño de archivos:"
         du -sh ./build/web/* | head -10 || echo "No se puede obtener tamaños"
+        echo "✅ Build completado - $(date)"
         
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
