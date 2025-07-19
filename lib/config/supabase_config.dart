@@ -1,10 +1,10 @@
+// En lib/config/supabase_config.dart
 class SupabaseConfig {
-  // URL del proyecto Supabase
   static const String supabaseUrl = 'https://jqyvdhqirhdfpztaudep.supabase.co';
   
-  // Clave anónima - Esta es segura para exponer en el cliente
-  // NOTA: Regenera esta clave en tu panel de Supabase después de este commit
-  static const String supabaseAnonKey = 'TU_NUEVA_ANON_KEY_AQUI';
+  // Usa la "Publishable key" aquí
+  static const String supabaseAnonKey = 'sb_publishable_GIW5247CoVnpkgZmom_wPw_1LkfowqA';
+}
   
   // ⚠️ IMPORTANTE: Service Role Key removida por seguridad
   // La Service Role Key NUNCA debe estar en el código del cliente
