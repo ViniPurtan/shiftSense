@@ -39,15 +39,13 @@ jobs:
         flutter build web --release \
           --base-href "/shiftSense/" \
           --web-renderer canvaskit \
-          --dart-define=FLUTTER_WEB_USE_SKIA=true \
-          --dart-define=SUPABASE_URL=https://jqyvdhqirhdfpztaudep.supabase.co \
-          --dart-define=SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxeXZkaHFpcmhkZnB6dGF1ZGVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI5Mjk2MjgsImV4cCI6MjA2ODUwNTYyOH0.RVGU4_Nwew6JD9nX4hz_QfeWgCHTz3ur17F1Yu-BLO0
+          --dart-define=FLUTTER_WEB_USE_SKIA=true
       
     - name: Fix base href in built files
       run: |
         # Fix any hardcoded paths that might be causing issues
         find build/web -name "*.html" -exec sed -i 's|href="/"|href="/shiftSense/"|g' {} \;
-        find build/web -name "*.js" -exec sed -i 's|"/assets/|"/shiftSense/assets/"|g' {} \; || true
+        find build/web -name "*.js" -exec sed -i 's|"/assets/"|"/shiftSense/assets/"|g' {} \; || true
         
     - name: Add 404.html for SPA routing
       run: |
