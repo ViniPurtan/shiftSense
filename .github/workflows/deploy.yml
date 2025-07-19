@@ -35,16 +35,31 @@ jobs:
       run: flutter pub get
       
     - name: Build web application
-      run: flutter build web --release --base-href "/shiftSense/"
+      run: |
+        flutter build web --release \
+          --base-href "/shiftSense/" \
+          --web-renderer canvaskit \
+          --dart-define=FLUTTER_WEB_USE_SKIA=true
       
+    - name: Fix base href in built files
+      run: |
+        # Fix any hardcoded paths that might be causing issues
+        find build/web -name "*.html" -exec sed -i 's|href="/"|href="/shiftSense/"|g' {} \;
+        find build/web -name "*.js" -exec sed -i 's|"/assets/|"/shiftSense/assets/"|g' {} \;
+        
+    - name: Add 404.html for SPA routing
+      run: |
+        cp build/web/index.html build/web/404.html
+        
     - name: List build/web contents (debug)
       run: |
         echo "Verificando contenido de build/web:"
         ls -la ./build/web/
         echo "Archivos principales:"
         ls -la ./build/web/*.html || echo "No hay archivos HTML"
-        ls -la ./build/web/*.js || echo "No hay archivos JS"
         find ./build/web -name "*.js" -o -name "*.wasm" || echo "No hay archivos JS/WASM"
+        echo "Contenido de index.html:"
+        head -20 ./build/web/index.html
         
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -53,3 +68,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
         force_orphan: true
+        cname: false
