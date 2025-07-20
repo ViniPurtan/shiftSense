@@ -8,7 +8,7 @@
     "description": "Gestión de Turnos y Vacaciones para Equipos de Trabajo",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
-    "scope": "/shiftSense/",
+    "scope": "./",
     "icons": [
         {
             "src": "icons/Icon-192.png",
