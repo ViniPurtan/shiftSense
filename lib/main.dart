@@ -8,9 +8,9 @@ import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-<<<<<<< HEAD
+  
+  // Inicializar formateo de fechas en español
   await initializeDateFormatting('es', null);
-=======
   
   // Inicializar Supabase
   try {
@@ -24,7 +24,6 @@ void main() async {
     // La aplicación continuará funcionando sin Supabase
   }
   
->>>>>>> 2234b4757e6233d42340b56d0048849e55cc2f4d
   runApp(const MyApp());
 }
 
