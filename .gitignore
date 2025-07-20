@@ -79,3 +79,6 @@ key.properties
 # Supabase secrets (if using separate config files)
 **/config/supabase_secrets.*
 **/config/production_config.*
+
+# Claude Code settings
+.claude/
