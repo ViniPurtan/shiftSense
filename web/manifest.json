@@ -1,11 +1,11 @@
 {
-    "name": "dreamflow_counter",
-    "short_name": "dreamflow_counter",
+    "name": "ShiftSense - Gestión de Turnos",
+    "short_name": "ShiftSense",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#6750A4",
+    "theme_color": "#6750A4",
+    "description": "Sistema de gestión de turnos y vacaciones para equipos de trabajo.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
