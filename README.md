@@ -1,249 +1,258 @@
-# ShiftSense 📅
+# 📅 ShiftSense - Documentación para FlutterFlow
 
-> **Gestión de Turnos y Vacaciones para Equipos de Trabajo**
-
-Sistema inteligente para gestionar turnos rotatorios de 9 empleados con distribución T1 (7 personas) y T2 (2 personas), incluyendo rotación automática de capitán y gestión integrada de vacaciones.
+**Sistema inteligente de gestión de turnos y vacaciones con guía completa de implementación en FlutterFlow**
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.0+-blue?logo=flutter)](https://flutter.dev/)
+[![FlutterFlow](https://img.shields.io/badge/FlutterFlow-Compatible-purple?logo=flutter)](https://flutterflow.io/)
 [![Dart](https://img.shields.io/badge/Dart-3.0+-blue?logo=dart)](https://dart.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-brightgreen?logo=github)](https://vinipurtan.github.io/shiftSense/)
+[![Documentation](https://img.shields.io/badge/Documentation-GitBook-orange)](https://app.gitbook.com/o/-LEJnsuiDJajz8FoVsPk/s/abrhwtCLK2InTZBm5pvT/)
 
-## 🌐 Demo en Vivo
+## 🎆 ¿Qué es ShiftSense?
 
-**[🚀 Ver ShiftSense en acción](https://vinipurtan.github.io/shiftSense/)**
+**ShiftSense** es un sistema inteligente para la gestión de turnos rotatorios y vacaciones, diseñado específicamente para equipos de 9 empleados con distribución T1 (7 personas) y T2 (2 personas), incluyendo rotación automática de capitán.
 
-### Previous Demo
-[ShiftSense Previous Preview](https://0zadbuks1yk84tzmzny0.share.dreamflow.app)
+### 🚀 Demo en Vivo
+**[🌐 Ver ShiftSense en Acción](https://vinipurtan.github.io/shiftSense/)**
+
+---
+
+## 📚 Documentación Completa para FlutterFlow
+
+Este repositorio contiene una **guía completa paso a paso** para implementar ShiftSense en FlutterFlow:
+
+### 🛠️ Guías de Implementación
+
+1. **[🚀 Configuración Inicial](docs/01-setup.md)**
+   - Setup de FlutterFlow y dependencias
+   - Configuración de tema y navegación
+   - Variables de estado globales
+
+2. **[🗃️ Modelado de Datos](docs/02-data-modeling.md)**
+   - Estructuras de datos principales
+   - Custom Data Types en FlutterFlow
+   - Persistencia con SharedPreferences
+
+3. **[🎨 Componentes UI](docs/03-ui-components.md)**
+   - Interfaces con Material Design 3
+   - Componentes reutilizables
+   - Responsive design
+
+4. **[⚙️ Lógica de Negocio](docs/04-business-logic.md)**
+   - Algoritmo de rotación inteligente
+   - Servicios de gestión de vacaciones
+   - Estadísticas y métricas
+
+5. **[🧪 Testing y Validación](docs/05-testing.md)**
+   - Estrategia de testing integral
+   - Unit, Widget e Integration tests
+   - Performance testing
+
+6. **[🚀 Despliegue](docs/06-deployment.md)**
+   - Deployment multiplataforma
+   - CI/CD con GitHub Actions
+   - Publicación en stores
+
+### 📖 Navegación Rápida
+- **[📋 Tabla de Contenidos](docs/SUMMARY.md)** - Índice completo
+- **[📚 GitBook](https://app.gitbook.com/o/-LEJnsuiDJajz8FoVsPk/s/abrhwtCLK2InTZBm5pvT/)** - Documentación interactiva
+
+---
 
 ## ✨ Características Principales
 
-### 📊 Gestión de Turnos
-- **Turnos Rotativos Automáticos**: Sistema de rotación inteligente para 9 empleados
-- **Distribución T1/T2**: 7 personas en T1, 2 personas en T2
-- **Capitán Rotativo**: Rotación automática del rol de capitán en T2
-- **Navegación por Semanas**: Visualización de semana anterior, actual y siguiente
-- **Algoritmo de Equidad**: Distribución equitativa de roles y responsabilidades
+### 📊 Gestión de Turnos Inteligente
+- 🔄 **Rotación Automática**: Algoritmo equitativo para 9 empleados
+- 👥 **Distribución T1/T2**: 7 personas en T1, 2 en T2
+- ⭐ **Capitán Rotativo**: Liderazgo rotativo en T2
+- 📅 **Navegación Temporal**: Vista de semanas anterior/actual/siguiente
 
-### 🏖️ Gestión de Vacaciones
-- **Solicitudes de Vacaciones**: Sistema completo de gestión de vacaciones
-- **Verificación de Disponibilidad**: Validación automática de personal mínimo
-- **Estados de Aprobación**: Pendiente, aprobado, rechazado
-- **Tipos de Ausencia**: Vacaciones anuales, enfermedad, personal, emergencia
+### 🏖️ Sistema de Vacaciones
+- 📝 **Solicitudes Digitales**: Gestión completa de vacaciones
+- ✅ **Validación Automática**: Verificación de personal mínimo
+- 🔄 **Estados**: Pendiente → Aprobado/Rechazado
+- 🚨 **Detección de Conflictos**: Prevención automática
 
-### 📈 Resumen y Estadísticas
-- **Resumen Anual**: Vista completa del año con estadísticas
-- **Distribución de Roles**: Análisis de participación en T1/T2
-- **Estadísticas de Capitán**: Seguimiento de rotación de liderazgo
-- **Métricas de Equipo**: Análisis de carga de trabajo y distribución
+### 📈 Analytics y Reportes
+- 📊 **Estadísticas Detalladas**: Participación por empleado
+- ⚖️ **Métricas de Equidad**: Distribución justa garantizada
+- 📅 **Resumen Anual**: Vista completa del año
+- 📈 **Tendencias**: Análisis de patrones
 
 ### 👥 Gestión de Equipo
-- **Perfiles de Empleados**: Información completa de cada miembro
-- **Avatars Personalizados**: Representación visual única
-- **Estadísticas Individuales**: Seguimiento de participación y roles
-- **Historial de Turnos**: Registro completo de asignaciones
+- 👤 **Perfiles Completos**: Información detallada
+- 🖼️ **Avatars Personalizados**: Representación visual
+- 📊 **Historial Individual**: Seguimiento de participación
+- 📋 **Estadísticas**: Métricas de cada empleado
 
-## 🏗️ Arquitectura
+---
 
-```
-lib/
-├── models/              # Modelos de datos
-│   └── employee.dart   # Employee, Vacation, WeeklyShift
-├── services/           # Lógica de negocio
-│   ├── data_service.dart      # Persistencia local
-│   └── shift_service.dart     # Algoritmo de turnos
-├── screens/            # Pantallas principales
-│   ├── current_shift_screen.dart
-│   ├── vacation_screen.dart
-│   ├── annual_overview_screen.dart
-│   └── employees_screen.dart
-├── widgets/            # Componentes reutilizables
-│   └── shift_card.dart
-├── theme.dart          # Tema y estilos
-└── main.dart          # Punto de entrada
-```
+## 🏗️ Arquitectura Técnica
 
-## 🚀 Instalación y Desarrollo
-
-### Prerrequisitos
-- Flutter 3.0.0 o superior
-- Dart 3.0.0 o superior
-
-### Configuración Local
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/ViniPurtan/shiftSense.git
-cd shiftSense
-
-# Instalar dependencias
-flutter pub get
-
-# Ejecutar en modo desarrollo
-flutter run -d chrome
-
-# O para dispositivos móviles
-flutter run
-```
-
-### Build para Producción
-
-```bash
-# Web
-flutter build web --release
-
-# Android
-flutter build apk --release
-
-# iOS
-flutter build ios --release
-```
-
-## 🛠️ Tecnologías Utilizadas
-
+### 🎨 Stack Tecnológico
 - **Framework**: Flutter 3.0+
+- **Plataforma**: FlutterFlow
 - **Lenguaje**: Dart 3.0+
-- **Persistencia**: SharedPreferences (local)
 - **UI**: Material Design 3
+- **Persistencia**: SharedPreferences
 - **Fuentes**: Google Fonts (Inter)
-- **Internacionalización**: Español (es)
-- **Deploy**: GitHub Pages + GitHub Actions
 
-### Dependencias Principales
+### 📱 Plataformas Soportadas
+- ✅ **Web**: Progressive Web App
+- ✅ **Android**: APK y App Bundle
+- ✅ **iOS**: App Store ready
+- ✅ **Desktop**: Windows, macOS, Linux
 
+### 🔧 Dependencias Principales
 ```yaml
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^6.1.0      # Tipografías modernas
-  shared_preferences: ^2.0.0 # Almacenamiento local
+  google_fonts: ^6.1.0      # Tipografías
+  shared_preferences: ^2.0.0 # Almacenamiento
   intl: ^0.19.0             # Internacionalización
   cupertino_icons: ^1.0.8   # Iconos iOS
 ```
 
-## 📱 Compatibilidad
+---
 
-- ✅ **Web**: Chrome, Firefox, Safari, Edge
-- ✅ **Android**: API 21+ (Android 5.0+)
-- ✅ **iOS**: iOS 12.0+
-- ✅ **Desktop**: Windows, macOS, Linux (Flutter Desktop)
+## 🚀 Inicio Rápido
 
-## 🔄 Algoritmo de Turnos
+### 📋 Prerrequisitos
+- **Cuenta FlutterFlow** (Plan Pro recomendado)
+- **Flutter SDK** 3.0+
+- **Editor** (VS Code o Android Studio)
+- **Git** configurado
 
-El sistema utiliza un algoritmo de rotación equitativa que:
+### ⚡ Setup Básico
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/ViniPurtan/shiftSense.git
+cd shiftSense
 
-1. **Calcula semanas desde época**: Determina posición en ciclo de rotación
-2. **Aplica offset rotativo**: Cada semana rota las asignaciones
-3. **Verifica disponibilidad**: Excluye empleados en vacaciones
-4. **Asigna roles automáticamente**: T1 (7), T2 (2), Capitán (rotativo)
-5. **Actualiza estadísticas**: Mantiene contadores de participación
+# 2. Instalar dependencias
+flutter pub get
 
-## 📊 Gestión de Datos
+# 3. Ejecutar tests
+flutter test
 
-### Almacenamiento Local
-- **Empleados**: Lista de 9 empleados con avatars y estadísticas
-- **Turnos**: Historial completo de asignaciones semanales
-- **Vacaciones**: Solicitudes y estados de aprobación
-- **Configuración**: Preferencias de usuario y configuración
-
-### Estructura de Datos
-
-```dart
-class Employee {
-  final String id, name, position, avatar;
-  final int totalWeeksAsT1, totalWeeksAsT2, totalWeeksAsCaptain;
-}
-
-class WeeklyShift {
-  final DateTime weekStart;
-  final List<String> t1Members, t2Members;
-  final String captainId;
-}
-
-class Vacation {
-  final String id, employeeId;
-  final DateTime startDate, endDate, requestDate;
-  final VacationType type;
-  final VacationStatus status;
-}
+# 4. Ejecutar aplicación
+flutter run -d chrome
 ```
 
-## 🎯 Características Técnicas
+### 📚 Seguir Documentación
+1. Comienza con **[Configuración Inicial](docs/01-setup.md)**
+2. Sigue la secuencia numérica de documentos
+3. Consulta **[GitBook](https://app.gitbook.com/o/-LEJnsuiDJajz8FoVsPk/s/abrhwtCLK2InTZBm5pvT/)** para navegación interactiva
 
-### Rendimiento
-- ⚡ **Carga Rápida**: Optimizado para web y móvil
-- 📱 **Responsive**: Adaptable a cualquier tamaño de pantalla
-- 🔄 **Lazy Loading**: Carga eficiente de datos
-- 💾 **Cache Local**: Funcionamiento offline
+---
 
-### UX/UI
-- 🎨 **Material Design 3**: Diseño moderno y consistente
-- 🌙 **Tema Oscuro/Claro**: Adaptación automática del sistema
-- 📱 **Navegación Intuitiva**: TabBar con iconos descriptivos
-- ⚡ **Animaciones Fluidas**: Transiciones suaves
+## 🎯 Casos de Uso
 
-### Seguridad
-- 🔒 **Datos Locales**: Sin exposición de información sensible
-- 🛡️ **Validación Robusta**: Verificación de integridad de datos
-- 🔐 **Sin Autenticación Externa**: Operación completamente local
+### 👨‍💼 Para Administradores
+- 📊 Dashboard ejecutivo completo
+- ⚙️ Gestión de configuraciones
+- 📈 Reportes avanzados
+- ✅ Aprobación de vacaciones
+
+### 👤 Para Empleados
+- 📅 Consulta de turnos asignados
+- 🏖️ Solicitud de vacaciones
+- 📊 Historial personal
+- 🗓️ Calendario anual
+
+### 🏢 Para Recursos Humanos
+- ⚖️ Métricas de equidad
+- 📊 Análisis de carga
+- 📈 Tendencias de ausencias
+- 📄 Reportes de cumplimiento
+
+---
+
+## 🎉 Beneficios de Implementación
+
+### 💼 Operacionales
+- ⏱️ **Ahorro de Tiempo**: Automatización completa
+- ⚖️ **Equidad Garantizada**: Algoritmo matemático
+- 📉 **Reducción de Errores**: Eliminación manual
+- 🔍 **Transparencia**: Visibilidad total
+
+### 💻 Técnicos
+- 📱 **Multiplataforma**: Una solución para todo
+- ⚡ **Alto Rendimiento**: Optimizado
+- 💾 **Sin Dependencias**: Funciona offline
+- 🔧 **Fácil Mantenimiento**: Arquitectura limpia
+
+### 👥 Organizacionales
+- 🚀 **Mejora de Moral**: Distribución justa visible
+- 🔥 **Reducción de Conflictos**: Sin favoritismos
+- 📈 **Mejor Planificación**: Vista clara
+- 📁 **Documentación**: Historial completo
+
+---
+
+## 🛣️ Roadmap
+
+### ✅ Fase 1: Completada
+- Algoritmo de rotación
+- Gestión de vacaciones
+- Interfaz completa
+- Testing integral
+- Deployment multiplataforma
+
+### 🔄 Fase 2: En Progreso
+- Notificaciones push
+- Dashboard avanzado
+- Exportación reportes
+- Integraciones externas
+
+### 🌟 Fase 3: Futuro
+- Sincronización cloud
+- Multi-organización
+- Inteligencia artificial
+- App nativa optimizada
+
+---
 
 ## 🤝 Contribuir
 
-1. **Fork** el proyecto
-2. **Crea** una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** a la rama (`git push origin feature/AmazingFeature`)
-5. **Abre** un Pull Request
+¡Las contribuciones son bienvenidas! Consulta nuestra **[Guía de Contribución](CONTRIBUTING.md)** para comenzar.
 
-### Guías de Contribución
-- Seguir las convenciones de Dart/Flutter
-- Incluir tests para nuevas funcionalidades
-- Documentar cambios en el código
-- Mantener compatibilidad con versiones existentes
+### 🎯 Formas de Contribuir
+- 🐛 Reportar bugs
+- ✨ Solicitar features
+- 📄 Mejorar documentación
+- 🧪 Agregar tests
+- 🎨 Mejorar UI/UX
 
-## 📝 Licencia
+---
+
+## 📞 Soporte y Comunidad
+
+### 🔗 Enlaces Útiles
+- **[🌐 Demo](https://vinipurtan.github.io/shiftSense/)** - Aplicación funcionando
+- **[📚 GitBook](https://app.gitbook.com/o/-LEJnsuiDJajz8FoVsPk/s/abrhwtCLK2InTZBm5pvT/)** - Documentación interactiva
+- **[🐛 Issues](https://github.com/ViniPurtan/shiftSense/issues)** - Reportar problemas
+- **[💬 Discussions](https://github.com/ViniPurtan/shiftSense/discussions)** - Comunidad
+
+### 📧 Contacto
+- **GitHub**: [@ViniPurtan](https://github.com/ViniPurtan)
+- **Email**: vini@nayarsystems.com
+
+---
+
+## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
-
-## 👨‍💻 Autor
-
-**Vini Purtan**
-- GitHub: [@ViniPurtan](https://github.com/ViniPurtan)
-
-## 🔮 Roadmap
-
-### v1.1.0 (Próximamente)
-- [ ] Notificaciones push para cambios de turno
-- [ ] Exportación de datos a Excel/PDF
-- [ ] Calendario visual mejorado
-- [ ] Sistema de comentarios en turnos
-
-### v1.2.0 (Futuro)
-- [ ] Sincronización en la nube (Firebase)
-- [ ] Aplicación móvil nativa
-- [ ] Sistema de reportes avanzado
-- [ ] Integración con calendarios externos
-
-### v2.0.0 (Visión)
-- [ ] Multi-empresa
-- [ ] Roles y permisos avanzados
-- [ ] Dashboard administrativo
-- [ ] API REST completa
-
-## 📞 Soporte
-
-¿Tienes preguntas o necesitas ayuda?
-
-- 📧 **Email**: [Crear Issue](https://github.com/ViniPurtan/shiftSense/issues)
-- 🐛 **Bugs**: [Reportar Bug](https://github.com/ViniPurtan/shiftSense/issues/new?template=bug_report.md)
-- 💡 **Feature Request**: [Solicitar Feature](https://github.com/ViniPurtan/shiftSense/issues/new?template=feature_request.md)
 
 ---
 
 <div align="center">
 
-**[⬆ Volver al inicio](#shiftsense-)**
+**¡Transforma la gestión de turnos de tu equipo hoy!** 🚀
 
-Made with ❤️ using Flutter
+**[📚 Comenzar Implementación](docs/01-setup.md)** | **[🌐 Ver Demo](https://vinipurtan.github.io/shiftSense/)**
+
+Hecho con ❤️ usando Flutter + FlutterFlow
 
 </div>
