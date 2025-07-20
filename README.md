@@ -40,17 +40,6 @@ Sistema inteligente para gestionar turnos rotatorios de 9 empleados con distribu
 - **Estadísticas Individuales**: Seguimiento de participación y roles
 - **Historial de Turnos**: Registro completo de asignaciones
 
-## 🎨 Capturas de Pantalla
-
-### Pantalla Principal - Turnos Actuales
-![Turnos](https://via.placeholder.com/800x600/6750A4/ffffff?text=Turnos+Actuales)
-
-### Gestión de Vacaciones
-![Vacaciones](https://via.placeholder.com/800x600/625B71/ffffff?text=Gestion+de+Vacaciones)
-
-### Resumen Anual
-![Resumen](https://via.placeholder.com/800x600/7D5260/ffffff?text=Resumen+Anual)
-
 ## 🏗️ Arquitectura
 
 ```

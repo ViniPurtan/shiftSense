@@ -41,6 +41,9 @@ class _CurrentShiftScreenState extends State<CurrentShiftScreen> {
     setState(() => _isLoading = true);
     
     try {
+      // Initialize shift service first
+      await _shiftService.initialize();
+      
       final currentWeekStart = _getWeekStart(_currentDate);
       final previousWeek = currentWeekStart.subtract(const Duration(days: 7));
       final nextWeek = currentWeekStart.add(const Duration(days: 7));
