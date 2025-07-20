@@ -13,6 +13,9 @@ Sistema inteligente para gestionar turnos rotatorios de 9 empleados con distribu
 
 **[🚀 Ver ShiftSense en acción](https://vinipurtan.github.io/shiftSense/)**
 
+### Previous Demo
+[ShiftSense Previous Preview](https://0zadbuks1yk84tzmzny0.share.dreamflow.app)
+
 ## ✨ Características Principales
 
 ### 📊 Gestión de Turnos
