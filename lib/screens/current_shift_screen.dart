@@ -387,7 +387,7 @@ class _CurrentShiftScreenState extends State<CurrentShiftScreen> {
                         fontSize: 13,
                       ),
                     ),
-                    if (employee.id == shift.captainId) ..[
+                    if (employee.id == shift.captainId) ...[
                       const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -408,7 +408,7 @@ class _CurrentShiftScreenState extends State<CurrentShiftScreen> {
                   ],
                 ),
               )),
-          if (captain != null) ..[
+          if (captain != null) ...[
             const SizedBox(height: 8),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
