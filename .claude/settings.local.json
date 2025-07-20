@@ -6,7 +6,10 @@
       "Bash(ls:*)",
       "Bash(export:*)",
       "Bash(rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)"
     ],
     "deny": []
   }
