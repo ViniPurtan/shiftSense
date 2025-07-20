@@ -23,8 +23,18 @@ class _CurrentShiftScreenState extends State<CurrentShiftScreen> {
   }
 
   void _loadData() {
-    _currentShiftFuture = _shiftService.getCurrentWeekShift();
+    _currentShiftFuture = _initializeAndGetShift();
     _employeesFuture = DataService.getInstance().then((ds) => ds.getEmployees());
+  }
+
+  Future<WeeklyShift?> _initializeAndGetShift() async {
+    await _shiftService.initialize();
+    try {
+      return await _shiftService.getCurrentShift();
+    } catch (e) {
+      print('Error getting current shift: $e');
+      return null;
+    }
   }
 
   @override
@@ -123,10 +133,22 @@ class _CurrentShiftScreenState extends State<CurrentShiftScreen> {
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () async {
-              await _shiftService.generateInitialShifts();
-              setState(() {
-                _loadData();
-              });
+              try {
+                await _shiftService.initialize();
+                await _shiftService.getCurrentShift();
+                setState(() {
+                  _loadData();
+                });
+              } catch (e) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Error: $e'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              }
             },
             child: const Text('Generar Turnos'),
           ),

@@ -151,7 +151,11 @@ class DataService {
 
   Future<Employee?> getEmployeeById(String id) async {
     final employees = await getEmployees();
-    return employees.where((e) => e.id == id).firstOrNull;
+    try {
+      return employees.firstWhere((e) => e.id == id);
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<List<Vacation>> getVacationsForEmployee(String employeeId) async {
