@@ -1,152 +1,86 @@
-# 🚀 ShiftSense - Architecture Plan
+# ShiftSense
 
-## 📋 Overview
+ShiftSense is a modern Flutter application for managing shifts and vacations for a 9-person team with rotating schedules (T1: 7 people, T2: 2 people) and a weekly rotating Captain role in T2.
 
-**ShiftSense** is a modern Flutter application designed for seamless shift and vacation management for a 9-person team with rotating schedules. The system handles complex rotation patterns with **Team 1** (7 members) and **Team 2** (2 members), featuring a weekly rotating Captain role within T2.
+## 🚀 Features
 
+<<<<<<< HEAD
 ---
 ## Provisional Page Hoasting
 This is a provisional page hoasting for the ShiftSense application. It showcases the current state of the application's architecture and features.
 https://app.dreamflow.com/project/40756c03-cb4b-4798-a8b9-fb0ba4eb6157/view
+=======
+- **Shift Management**: Rotating schedules for different teams
+- **Vacation Planning**: Integrated vacation management system
+- **Captain Role**: Weekly rotating captain assignments for T2
+- **Team Organization**: Manage 9-person teams efficiently
+- **Modern UI**: Built with Flutter for a smooth user experience
+>>>>>>> 2234b4757e6233d42340b56d0048849e55cc2f4d
 
-## ✨ Core Features
+## 🛠️ Technical Stack
 
-### 📅 **Current Week View**
-Display current shift assignments with clear Captain identification and intuitive navigation
+- **Frontend**: Flutter (Web)
+- **State Management**: Provider pattern
+- **Storage**: SharedPreferences for local data
+- **Fonts**: Google Fonts integration
+- **Architecture**: Clean architecture with separation of concerns
 
-### 🏖️ **Vacation Management** 
-Streamlined vacation request system with conflict detection and approval workflows
+## 📦 Installation
 
-### 📊 **Annual Overview**
-Comprehensive year-long visualization of shifts, captain rotations, and vacation distribution
-
-### 👥 **Employee Management**
-Detailed employee profiles with performance statistics and rotation metrics
-
----
-
-## 🏗️ Technical Architecture
-
-### 📦 Data Models
-
-| Model | Description | Key Fields |
-|-------|-------------|------------|
-| **Employee** | Core team member data | `id`, `name`, `position`, `avatar`, `statistics` |
-| **Vacation** | Leave management | `employeeId`, `startDate`, `endDate`, `status`, `type` |
-| **WeeklyShift** | Shift assignments | `weekStart`, `t1Members`, `t2Members`, `captainId` |
-| **ShiftStats** | Analytics data | Rotation metrics and fairness calculations |
-
-### 🖥️ Screen Structure
-
-```
-📱 HomePage (Bottom Navigation)
-├── 📍 CurrentShiftScreen - Weekly view with navigation
-├── 🏖️ VacationScreen - Calendar + request form
-├── 📈 AnnualOverviewScreen - Year grid + statistics
-└── 👤 EmployeesScreen - Team profiles + metrics
+1. Clone the repository:
+```bash
+git clone https://github.com/ViniPurtan/shiftSense.git
+cd shiftSense
 ```
 
-### ⚡ Business Logic Services
-
-#### 🔄 **ShiftService**
-- Intelligent rotation algorithms
-- Captain assignment logic
-- Fairness validation
-
-#### 📝 **VacationService**
-- Request processing
-- Conflict detection
-- Approval workflows
-
-#### 💾 **DataService**
-- Local storage management
-- Data persistence with `shared_preferences`
-
-#### 📊 **StatsService**
-- Fairness metric calculations
-- Performance analytics
-- Rotation statistics
-
----
-
-## 🎯 Key Features
-
-### 🔄 **Smart Rotation System**
-- Automatic 9-person cycle management
-- Intelligent captain rotation ensuring equity
-- Real-time fairness monitoring
-
-### ⚠️ **Conflict Management**
-- Advanced vacation conflict detection
-- Automated scheduling validation
-- Smart resolution suggestions
-
-### 🎨 **Modern UI/UX**
-- Material Design 3 implementation
-- Smooth animations and transitions
-- Intuitive visual indicators for roles and shifts
-
-### 📈 **Analytics Dashboard**
-- Statistical analysis of rotation fairness
-- Performance metrics visualization
-- Comprehensive reporting tools
-
----
-
-## 🛠️ Implementation Roadmap
-
-### Phase 1: Foundation
-1. **🏗️ Setup** - Data models and core services
-2. **🧠 Logic** - Implement shift rotation algorithms
-
-### Phase 2: Core Features
-3. **🗂️ Navigation** - Bottom tab structure
-4. **📅 Current View** - Weekly shift display with navigation
-5. **🏖️ Vacation System** - Request and management features
-
-### Phase 3: Advanced Features
-6. **📊 Analytics** - Annual overview with statistics
-7. **👥 Profiles** - Employee management interface
-
-### Phase 4: Polish
-8. **🎨 Design** - Modern UI with animations
-9. **🧪 Testing** - Algorithm validation and QA
-10. **🚀 Deployment** - Final compilation and optimization
-
----
-
-## 📁 File Architecture
-
-```
-📂 ShiftSense (10 files)
-├── 📊 models/
-│   └── employee.dart                    # Data models
-├── ⚙️ services/
-│   ├── shift_service.dart              # Rotation logic
-│   └── data_service.dart               # Local storage
-├── 📱 screens/
-│   ├── home_page.dart                  # Main navigation
-│   ├── current_shift_screen.dart       # Weekly view
-│   ├── vacation_screen.dart            # Vacation management
-│   ├── annual_overview_screen.dart     # Yearly statistics
-│   └── employees_screen.dart           # Team profiles
-├── 🧩 widgets/
-│   └── shift_card.dart                 # Reusable components
-└── 🚀 main.dart                        # App entry point
+2. Install dependencies:
+```bash
+flutter pub get
 ```
 
+3. Run the application:
+```bash
+flutter run -d chrome
+```
+
+## 🚀 Building for Web
+
+To build for web deployment:
+
+```bash
+flutter build web --release --base-href "/shiftSense/"
+```
+
+Or use the provided build script:
+```bash
+chmod +x build_check.sh
+./build_check.sh
+```
+
+## 🌐 Live Demo
+
+Visit the live application at: [Shift Sense](https://vinipurtan.github.io/shiftSense/)
+Previous Live Demo at: [Shift Sense Demo App](https://0zadbuks1yk84tzmzny0.share.dreamflow.app)
+
+## 📋 Project Structure
+
+```
+lib/
+├── models/          # Data models
+├── screens/         # UI screens
+├── widgets/         # Reusable widgets
+├── services/        # Business logic
+└── main.dart        # App entry point
+```
+
+## 🔧 Configuration
+
+The application uses environment-specific configurations. Check `pubspec.yaml` for dependencies and version constraints.
+
+## 📄 License
+
+This project is developed by Vinicius testing purposes only & for internal team management.
+
 ---
 
-## 🎯 Success Metrics
-
-This architecture ensures a **maintainable**, **scalable** solution that exceeds Nayar Systems requirements while delivering an exceptional user experience through:
-
-- **📈 Efficiency** - Streamlined shift management workflows
-- **⚖️ Fairness** - Automated rotation equity monitoring  
-- **🎨 Usability** - Intuitive, modern interface design
-- **🔧 Maintainability** - Clean, modular code architecture
-- **📊 Insights** - Comprehensive analytics and reporting
-
----
-
-*Built with Flutter 💙 for modern shift management*
+**Nayar Systems** - Gestión de Turnos y Vacaciones para Equipos de Trabajo
