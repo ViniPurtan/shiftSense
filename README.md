@@ -6,9 +6,12 @@ ShiftSense is a modern Flutter application for managing shifts and vacations for
 
 ---
 ## Provisional Page Hoasting
-This is a provisional page hoasting for the ShiftSense application. It showcases the current state of the application's architecture and features.
-https://app.dreamflow.com/project/40756c03-cb4b-4798-a8b9-fb0ba4eb6157/view
-=======
+
+This is a provisional page hoasting for the ShiftSense application. 
+It showcases the current state of the application's architecture and features.
+[Shift Sense](https://app.dreamflow.com/project/40756c03-cb4b-4798-a8b9-fb0ba4eb6157/view)
+
+
 - **Shift Management**: Rotating schedules for different teams
 - **Vacation Planning**: Integrated vacation management system
 - **Captain Role**: Weekly rotating captain assignments for T2
