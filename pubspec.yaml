@@ -1,10 +1,10 @@
 name: shiftsense
-description: "Gestión de Turnos y Vacaciones para Equipos de Trabajo. Sistema para gestionar turnos rotatorios de 9 empleados (T1: 7 personas, T2: 2 personas) con rol de capitán rotativo y gestión integrada de vacaciones."
+description: "Nayar Systems - Gestión de Turnos y Vacaciones para Equipos de Trabajo. Sistema para gestionar turnos rotatorios de 9 empleados (T1: 7 personas, T2: 2 personas) con rol de capitán rotativo y gestión integrada de vacaciones."
 publish_to: "none"
 version: 1.0.0
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ^3.6.0
 
 dependencies:
   flutter:
@@ -12,14 +12,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.1.0
   shared_preferences: ^2.0.0
-  intl: ^0.19.0
-  supabase_flutter: ^2.5.6
-  http: ^1.2.1
+  intl: 0.20.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
