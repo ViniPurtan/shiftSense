@@ -1,5 +1,5 @@
 name: shiftsense
-description: "Nayar Systems - Gestión de Turnos y Vacaciones para Equipos de Trabajo. Sistema para gestionar turnos rotatorios de 9 empleados (T1: 7 personas, T2: 2 personas) con rol de capitán rotativo y gestión integrada de vacaciones."
+description: "Gestión de Turnos y Vacaciones para Equipos de Trabajo. Sistema para gestionar turnos rotatorios de 9 empleados (T1: 7 personas, T2: 2 personas) con rol de capitán rotativo y gestión integrada de vacaciones."
 publish_to: "none"
 version: 1.0.0
 
