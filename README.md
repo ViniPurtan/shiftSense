@@ -85,4 +85,4 @@ This project is developed by Vinicius testing purposes only & for internal team 
 
 ---
 
-** Gestión de Turnos y Vacaciones para Equipos de Trabajo **
+*Gestión de Turnos y Vacaciones para Equipos de Trabajo*
