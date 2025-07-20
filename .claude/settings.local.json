@@ -9,7 +9,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "WebFetch(domain:0zadbuks1yk84tzmzny0.share.dreamflow.app)"
     ],
     "deny": []
   }
