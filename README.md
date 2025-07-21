@@ -237,7 +237,6 @@ flutter run -d chrome
 
 ### 📧 Contacto
 - **GitHub**: [@ViniPurtan](https://github.com/ViniPurtan)
-- **Email**: vini@nayarsystems.com
 
 ---
 
