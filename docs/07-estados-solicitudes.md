@@ -13,3 +13,7 @@ El modelo Vacation tiene el campo status que puede ser pending, approved o rejec
 No hay lógica automática en el sistema que apruebe o rechace solicitudes, ni siquiera para bajas médicas o urgencias.
 
 ## Propuesta para la mejora de la app
+### Reglas 
+- El primero de los empleados que solicita es al primero que se le otrogan las vacaciones anuales. El sistema se encargara de una vez introducidos las vacaciones recrear los turnos en funcion de ello. El sistema lo hara automáticamente cada vez que hay un cambio o solicitud de vacaciones. 
+- Bajas medicas y urgencias seran aceptadas automaticamente y el sistema re-gestionara los turnos de manera inmediata avisando a los interlocutores de sus cambios de turnos pertinentes.
+- Asuntos personales se aceptaran siempre y cuando se avisen con 48h de antelación. El sistema, de nuevo lo gestionara y reubicara los empleados en nuevos turnos etc. 
