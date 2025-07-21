@@ -379,7 +379,7 @@ class _VacationScreenState extends State<VacationScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => VacationFormBottomSheet(employees: _employees),
+      builder: (context) => VacationFormBottomSheet(employees: _employees, allVacations: _vacations),
     );
 
     if (result != null) {
@@ -388,16 +388,16 @@ class _VacationScreenState extends State<VacationScreen> {
           result.employeeId,
           result.startDate,
           result.endDate,
+          result.type,
         );
 
-        if (!canTake && mounted) {
+        if (!canTake && mounted && result.type != VacationType.sick && result.type != VacationType.emergency) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text('No se pueden aprobar estas vacaciones: insuficientes empleados disponibles'),
+              content: const Text('Advertencia: No hay suficientes empleados disponibles para cubrir los turnos en estas fechas. La solicitud será registrada pero podría ser rechazada.'),
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
           );
-          return;
         }
 
         await _dataService.addVacation(result);
@@ -433,8 +433,9 @@ class _VacationScreenState extends State<VacationScreen> {
 
 class VacationFormBottomSheet extends StatefulWidget {
   final List<Employee> employees;
+  final List<Vacation> allVacations;
 
-  const VacationFormBottomSheet({super.key, required this.employees});
+  const VacationFormBottomSheet({super.key, required this.employees, required this.allVacations});
 
   @override
   State<VacationFormBottomSheet> createState() => _VacationFormBottomSheetState();
@@ -475,11 +476,22 @@ class _VacationFormBottomSheetState extends State<VacationFormBottomSheet> {
           ),
           Padding(
             padding: const EdgeInsets.all(24),
-            child: Text(
-              'Solicitar Vacaciones',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              children: [
+                Text(
+                  'Solicitar Vacaciones',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                if (_selectedEmployee != null) ...[
+                  VacationDaysSummary(
+                    employee: _selectedEmployee!,
+                    allVacations: widget.allVacations,
+                  ),
+                ],
+              ],
             ),
           ),
           Expanded(
@@ -642,6 +654,55 @@ class _VacationFormBottomSheetState extends State<VacationFormBottomSheet> {
       VacationType.personal => 'Asuntos personales',
       VacationType.emergency => 'Emergencia',
     };
+  }
+}
+
+// Widget para mostrar los días restantes de cada tipo de vacaciones
+class VacationDaysSummary extends StatelessWidget {
+  final Employee employee;
+  final List<Vacation> allVacations;
+
+  const VacationDaysSummary({super.key, required this.employee, required this.allVacations});
+
+  int getRemainingDays(VacationType type) {
+    final maxDays = {
+      VacationType.annual: 22,
+      VacationType.sick: 365,
+      VacationType.personal: 5,
+      VacationType.emergency: 3,
+    };
+    final usedDays = allVacations
+      .where((v) => v.employeeId == employee.id && v.type == type)
+      .fold<int>(0, (sum, v) => sum + v.durationInDays);
+    return maxDays[type]! - usedDays;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildType(context, 'Anuales', getRemainingDays(VacationType.annual)),
+            _buildType(context, 'Baja', getRemainingDays(VacationType.sick)),
+            _buildType(context, 'Personal', getRemainingDays(VacationType.personal)),
+            _buildType(context, 'Urgencia', getRemainingDays(VacationType.emergency)),
+          ],
+        ),
+        const SizedBox(height: 8),
+      ],
+    );
+  }
+
+  Widget _buildType(BuildContext context, String label, int days) {
+    return Column(
+      children: [
+        Text('$days', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+        Text(label, style: Theme.of(context).textTheme.bodySmall),
+      ],
+    );
   }
 }
 
