@@ -60,4 +60,12 @@ No hay lógica automática en el sistema que apruebe o rechace solicitudes, ni s
 - Forzar la regeneración de turnos si es necesario.
 - (Opcional) Ver un historial de cambios y notificaciones. - ???? (irrelevante?) preguntar al cliente. 
 
+## Solución propuesta:
+- Cada vez que se añade o modifica una solicitud de vacaciones, el sistema debe:
+1. Recorrer todas las solicitudes de vacaciones anuales en estado "pendiente", en orden de llegada.
+2. Aprobar automáticamente tantas como sea posible (según la disponibilidad mínima de empleados).
+3. Rechazar el resto si no hay disponibilidad.
+4. Regenerar los turnos desde la semana afectada tras cada aprobación/cambio.
+
+Esto se puede hacer justo después de añadir una nueva solicitud o cuando el administrador cambia el estado de alguna.
 
