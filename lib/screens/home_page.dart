@@ -3,6 +3,7 @@ import 'package:shiftsense/screens/current_shift_screen.dart';
 import 'package:shiftsense/screens/vacation_screen.dart';
 import 'package:shiftsense/screens/annual_overview_screen.dart';
 import 'package:shiftsense/screens/employees_screen.dart';
+import 'package:shiftsense/screens/admin_vacations_screen.dart';
 import 'package:shiftsense/services/shift_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
   late TabController _tabController;
   bool _isLoading = true;
+  bool _isAdmin = false;
 
   final List<NavigationItem> _navigationItems = [
     NavigationItem(
@@ -43,7 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: _navigationItems.length, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     _initializeServices();
   }
 
@@ -63,6 +65,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _onItemTapped(int index) {
     setState(() => _selectedIndex = index);
     _tabController.animateTo(index);
+  }
+
+  void _toggleAdmin(bool value) {
+    setState(() {
+      _isAdmin = value;
+      _selectedIndex = 0;
+      _tabController.dispose();
+      _tabController = TabController(length: _navigationItems.length, vsync: this);
+    });
   }
 
   @override
@@ -90,14 +101,39 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'ShiftSense',
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
+        ),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        elevation: 0,
+        centerTitle: true,
+        actions: [
+          Row(
+            children: [
+              const Text('Admin'),
+              Switch(
+                value: _isAdmin,
+                onChanged: _toggleAdmin,
+              ),
+              const SizedBox(width: 12),
+            ],
+          ),
+        ],
+      ),
       body: TabBarView(
         controller: _tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          CurrentShiftScreen(),
-          VacationScreen(),
-          AnnualOverviewScreen(),
-          EmployeesScreen(),
+        children: [
+          const CurrentShiftScreen(),
+          const VacationScreen(),
+          const AnnualOverviewScreen(),
+          const EmployeesScreen(),
+          if (_isAdmin) const AdminVacationsScreen(),
         ],
       ),
       bottomNavigationBar: Container(
