@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shiftsense/models/employee.dart';
+import 'package:shiftsense/services/shift_service.dart';
 
 class DataService {
   static const String _employeesKey = 'employees';
@@ -132,6 +133,64 @@ class DataService {
     final vacations = await getVacations();
     vacations.add(vacation);
     await saveVacations(vacations);
+
+    // Lógica automática para vacaciones anuales
+    await _processAnnualVacationApprovals();
+  }
+
+  Future<void> _processAnnualVacationApprovals() async {
+    final vacations = await getVacations();
+    final shiftService = ShiftService();
+    await shiftService.initialize();
+    // Ordenar por fecha de solicitud
+    final annualPending = vacations
+      .where((v) => v.type == VacationType.annual && v.status == VacationStatus.pending)
+      .toList()
+      ..sort((a, b) => a.requestDate.compareTo(b.requestDate));
+    bool changed = false;
+    for (final v in annualPending) {
+      final canApprove = await shiftService.canEmployeeTakeVacation(
+        v.employeeId, v.startDate, v.endDate, v.type,
+      );
+      if (canApprove) {
+        // Aprobar
+        final idx = vacations.indexWhere((vv) => vv.id == v.id);
+        if (idx != -1 && vacations[idx].status != VacationStatus.approved) {
+          vacations[idx] = Vacation(
+            id: v.id,
+            employeeId: v.employeeId,
+            startDate: v.startDate,
+            endDate: v.endDate,
+            type: v.type,
+            status: VacationStatus.approved,
+            notes: v.notes,
+            requestDate: v.requestDate,
+          );
+          changed = true;
+          // Regenerar turnos desde la semana de la vacación
+          await shiftService.regenerateShiftsFromWeek(v.startDate);
+        }
+      } else {
+        // Rechazar si ya estaba pendiente
+        final idx = vacations.indexWhere((vv) => vv.id == v.id);
+        if (idx != -1 && vacations[idx].status != VacationStatus.rejected) {
+          vacations[idx] = Vacation(
+            id: v.id,
+            employeeId: v.employeeId,
+            startDate: v.startDate,
+            endDate: v.endDate,
+            type: v.type,
+            status: VacationStatus.rejected,
+            notes: v.notes,
+            requestDate: v.requestDate,
+          );
+          changed = true;
+        }
+      }
+    }
+    if (changed) {
+      await saveVacations(vacations);
+    }
   }
 
   Future<void> updateVacation(Vacation vacation) async {
