@@ -172,23 +172,22 @@ class DataService {
   }
 
   Future<void> _processAnnualVacationApprovals() async {
-    final vacations = await getVacations();
+    var vacations = await getVacations();
     final shiftService = ShiftService();
     await shiftService.initialize();
     // Ordenar por fecha de solicitud
-    final annualPending = vacations
+    final annualPendingIds = vacations
       .where((v) => v.type == VacationType.annual && v.status == VacationStatus.pending)
-      .toList()
-      ..sort((a, b) => a.requestDate.compareTo(b.requestDate));
+      .map((v) => v.id)
+      .toList();
     bool changed = false;
-    // Procesar en bucle hasta que no cambie nada
     var keepTrying = true;
     while (keepTrying) {
       keepTrying = false;
-      for (final v in annualPending) {
-        // Solo procesar si sigue pendiente
-        final idx = vacations.indexWhere((vv) => vv.id == v.id);
+      for (final id in annualPendingIds) {
+        final idx = vacations.indexWhere((vv) => vv.id == id);
         if (idx == -1 || vacations[idx].status != VacationStatus.pending) continue;
+        final v = vacations[idx];
         final canApprove = await shiftService.canEmployeeTakeVacation(
           v.employeeId, v.startDate, v.endDate, v.type,
         );
@@ -205,16 +204,17 @@ class DataService {
           );
           changed = true;
           keepTrying = true;
+          await saveVacations(vacations); // Actualizar almacenamiento y memoria
           await shiftService.regenerateShiftsFromWeek(v.startDate);
-        } else {
-          // No aprobar, pero no rechazar aquí (solo rechazar si nunca se puede aprobar)
+          vacations = await getVacations(); // Recargar lista actualizada
         }
       }
     }
     // Rechazar las que sigan pendientes y no se puedan aprobar
-    for (final v in annualPending) {
-      final idx = vacations.indexWhere((vv) => vv.id == v.id);
+    for (final id in annualPendingIds) {
+      final idx = vacations.indexWhere((vv) => vv.id == id);
       if (idx != -1 && vacations[idx].status == VacationStatus.pending) {
+        final v = vacations[idx];
         vacations[idx] = Vacation(
           id: v.id,
           employeeId: v.employeeId,
