@@ -68,4 +68,8 @@ No hay lógica automática en el sistema que apruebe o rechace solicitudes, ni s
 4. Regenerar los turnos desde la semana afectada tras cada aprobación/cambio.
 
 Esto se puede hacer justo después de añadir una nueva solicitud o cuando el administrador cambia el estado de alguna.
-
+- Procesa automáticamente todas las solicitudes de vacaciones anuales pendientes cada vez que se añade una nueva solicitud.
+- Aprueba en orden de llegada tantas como sea posible según la disponibilidad mínima de empleados.
+- Rechaza automáticamente las que no se puedan conceder.
+- Regenera los turnos desde la semana afectada tras cada aprobación/cambio.
+Esto ocurre de forma inmediata, sin esperas ni intervención manual (excepto si el admin lo desea).
