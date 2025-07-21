@@ -17,3 +17,47 @@ No hay lógica automática en el sistema que apruebe o rechace solicitudes, ni s
 - El primero de los empleados que solicita es al primero que se le otrogan las vacaciones anuales. El sistema se encargara de una vez introducidos las vacaciones recrear los turnos en funcion de ello. El sistema lo hara automáticamente cada vez que hay un cambio o solicitud de vacaciones. 
 - Bajas medicas y urgencias seran aceptadas automaticamente y el sistema re-gestionara los turnos de manera inmediata avisando a los interlocutores de sus cambios de turnos pertinentes.
 - Asuntos personales se aceptaran siempre y cuando se avisen con 48h de antelación. El sistema, de nuevo lo gestionara y reubicara los empleados en nuevos turnos etc. 
+
+## Reglas y funcionamiento propuesto
+
+### 1. Bajas médicas y urgencias
+- Se aprueban automáticamente al solicitarse.
+- El sistema regenera los turnos inmediatamente y notifica a los empleados afectados.
+
+### 2. Vacaciones anuales
+- El orden de solicitud determina la prioridad: el primero que solicita es el primero en ser aprobado.
+- Cuando un empleado solicita vacaciones anuales:
+- Se crea la solicitud en estado "pendiente".
+- El sistema, tras cada nueva solicitud, revisa todas las solicitudes pendientes en orden de llegada y aprueba tantas como sea posible (según la disponibilidad mínima de empleados).
+- Tras cada aprobación, se regeneran los turnos automáticamente.
+
+### 3. Asuntos personales
+- Se aprueban automáticamente si se solicitan con al menos 48h de antelación.
+- El sistema regenera los turnos y notifica a los empleados afectados.
+
+* * *
+
+## ¿Quién valida?
+
+- El sistema es el responsable de aprobar/rechazar solicitudes según las reglas anteriores.
+- No es necesario que un administrador intervenga manualmente, salvo en casos de maxima prioridad.
+
+## Plan de implementación
+
+### 1. Lógica automática (backend/app)
+
+- El sistema aprueba automáticamente según las reglas que definimos.
+- Tras cada cambio, se regeneran los turnos.
+- El administrador puede modificar el estado de cualquier solicitud manualmente.
+
+### 2. Pantalla de Administrador
+
+- Nueva pantalla accesible solo para administradores.
+- Permite:
+- Ver todas las solicitudes de vacaciones/ausencias (pendientes, aprobadas, rechazadas).
+- Filtrar por tipo, estado, empleado, fecha.
+- Aprobar, rechazar o modificar cualquier solicitud manualmente.
+- Forzar la regeneración de turnos si es necesario.
+- (Opcional) Ver un historial de cambios y notificaciones. - ???? (irrelevante?) preguntar al cliente. 
+
+
