@@ -157,29 +157,29 @@ class ShiftService {
   Future<bool> canEmployeeTakeVacation(
     String employeeId, 
     DateTime startDate, 
-    DateTime endDate
+    DateTime endDate,
+    VacationType type,
   ) async {
+    // Permitir siempre bajas médicas y emergencias
+    if (type == VacationType.sick || type == VacationType.emergency) {
+      return true;
+    }
     final weekStart = _getWeekStart(startDate);
     final weekEnd = _getWeekStart(endDate);
-    
     var currentWeek = weekStart;
     while (currentWeek.isBefore(weekEnd.add(const Duration(days: 1)))) {
       final activeVacations = await _dataService.getActiveVacationsForWeek(currentWeek);
       final vacationEmployeeIds = activeVacations.map((v) => v.employeeId).toSet();
       vacationEmployeeIds.add(employeeId); // Add this employee to vacation list
-      
       final employees = await _dataService.getEmployees();
       final availableEmployees = employees
           .where((e) => !vacationEmployeeIds.contains(e.id))
           .length;
-      
       if (availableEmployees < 9) {
         return false;
       }
-      
       currentWeek = currentWeek.add(const Duration(days: 7));
     }
-    
     return true;
   }
 
