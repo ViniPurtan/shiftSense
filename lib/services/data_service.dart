@@ -131,11 +131,44 @@ class DataService {
 
   Future<void> addVacation(Vacation vacation) async {
     final vacations = await getVacations();
-    vacations.add(vacation);
+    Vacation toAdd = vacation;
+
+    // Aprobar automáticamente bajas médicas y urgencias
+    if (vacation.type == VacationType.sick || vacation.type == VacationType.emergency) {
+      toAdd = Vacation(
+        id: vacation.id,
+        employeeId: vacation.employeeId,
+        startDate: vacation.startDate,
+        endDate: vacation.endDate,
+        type: vacation.type,
+        status: VacationStatus.approved,
+        notes: vacation.notes,
+        requestDate: vacation.requestDate,
+      );
+    }
+    // Aprobar automáticamente asuntos personales si hay 48h de antelación
+    else if (vacation.type == VacationType.personal) {
+      final now = DateTime.now();
+      if (vacation.startDate.difference(now).inHours >= 48) {
+        toAdd = Vacation(
+          id: vacation.id,
+          employeeId: vacation.employeeId,
+          startDate: vacation.startDate,
+          endDate: vacation.endDate,
+          type: vacation.type,
+          status: VacationStatus.approved,
+          notes: vacation.notes,
+          requestDate: vacation.requestDate,
+        );
+      }
+    }
+    vacations.add(toAdd);
     await saveVacations(vacations);
 
     // Lógica automática para vacaciones anuales
-    await _processAnnualVacationApprovals();
+    if (toAdd.type == VacationType.annual) {
+      await _processAnnualVacationApprovals();
+    }
   }
 
   Future<void> _processAnnualVacationApprovals() async {
