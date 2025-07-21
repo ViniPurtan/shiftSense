@@ -181,14 +181,18 @@ class DataService {
       .toList()
       ..sort((a, b) => a.requestDate.compareTo(b.requestDate));
     bool changed = false;
-    for (final v in annualPending) {
-      final canApprove = await shiftService.canEmployeeTakeVacation(
-        v.employeeId, v.startDate, v.endDate, v.type,
-      );
-      if (canApprove) {
-        // Aprobar
+    // Procesar en bucle hasta que no cambie nada
+    var keepTrying = true;
+    while (keepTrying) {
+      keepTrying = false;
+      for (final v in annualPending) {
+        // Solo procesar si sigue pendiente
         final idx = vacations.indexWhere((vv) => vv.id == v.id);
-        if (idx != -1 && vacations[idx].status != VacationStatus.approved) {
+        if (idx == -1 || vacations[idx].status != VacationStatus.pending) continue;
+        final canApprove = await shiftService.canEmployeeTakeVacation(
+          v.employeeId, v.startDate, v.endDate, v.type,
+        );
+        if (canApprove) {
           vacations[idx] = Vacation(
             id: v.id,
             employeeId: v.employeeId,
@@ -200,25 +204,28 @@ class DataService {
             requestDate: v.requestDate,
           );
           changed = true;
-          // Regenerar turnos desde la semana de la vacación
+          keepTrying = true;
           await shiftService.regenerateShiftsFromWeek(v.startDate);
+        } else {
+          // No aprobar, pero no rechazar aquí (solo rechazar si nunca se puede aprobar)
         }
-      } else {
-        // Rechazar si ya estaba pendiente
-        final idx = vacations.indexWhere((vv) => vv.id == v.id);
-        if (idx != -1 && vacations[idx].status != VacationStatus.rejected) {
-          vacations[idx] = Vacation(
-            id: v.id,
-            employeeId: v.employeeId,
-            startDate: v.startDate,
-            endDate: v.endDate,
-            type: v.type,
-            status: VacationStatus.rejected,
-            notes: v.notes,
-            requestDate: v.requestDate,
-          );
-          changed = true;
-        }
+      }
+    }
+    // Rechazar las que sigan pendientes y no se puedan aprobar
+    for (final v in annualPending) {
+      final idx = vacations.indexWhere((vv) => vv.id == v.id);
+      if (idx != -1 && vacations[idx].status == VacationStatus.pending) {
+        vacations[idx] = Vacation(
+          id: v.id,
+          employeeId: v.employeeId,
+          startDate: v.startDate,
+          endDate: v.endDate,
+          type: v.type,
+          status: VacationStatus.rejected,
+          notes: v.notes,
+          requestDate: v.requestDate,
+        );
+        changed = true;
       }
     }
     if (changed) {
