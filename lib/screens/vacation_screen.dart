@@ -672,7 +672,7 @@ class VacationDaysSummary extends StatelessWidget {
       VacationType.emergency: 3,
     };
     final usedDays = allVacations
-      .where((v) => v.employeeId == employee.id && v.type == type)
+      .where((v) => v.employeeId == employee.id && v.type == type && v.status == VacationStatus.approved)
       .fold<int>(0, (sum, v) => sum + v.durationInDays);
     return maxDays[type]! - usedDays;
   }
