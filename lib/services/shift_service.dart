@@ -175,7 +175,8 @@ class ShiftService {
       final availableEmployees = employees
           .where((e) => !vacationEmployeeIds.contains(e.id))
           .length;
-      if (availableEmployees < 9) {
+      // Nuevo criterio: mínimo 4 empleados disponibles (2 en T1 y 2 en T2)
+      if (availableEmployees < 4) {
         return false;
       }
       currentWeek = currentWeek.add(const Duration(days: 7));
