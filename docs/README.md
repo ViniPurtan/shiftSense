@@ -69,12 +69,12 @@ Esta documentación te guiará paso a paso para implementar ShiftSense completam
 
 Al finalizar esta guía tendrás:
 
-✅ **App funcional** con detección automática de turnos
-✅ **Dashboard administrativo** completo
-✅ **Sistema de notificaciones** configurado
-✅ **Reportes exportables** implementados
-✅ **Deploy multiplataforma** (iOS, Android, Web)
-✅ **Testing completo** y documentado
+- ✅ **App funcional** con detección automática de turnos
+- ✅ **Dashboard administrativo** completo
+- ✅ **Sistema de notificaciones** configurado
+- ✅ **Reportes exportables** implementados
+- ✅ **Deploy multiplataforma** (iOS, Android, Web)
+- ✅ **Testing completo** y documentado
 
 ## 🤝 Contribuciones
 
