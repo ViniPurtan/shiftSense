@@ -73,3 +73,9 @@ Esto se puede hacer justo después de añadir una nueva solicitud o cuando el ad
 - Rechaza automáticamente las que no se puedan conceder.
 - Regenera los turnos desde la semana afectada tras cada aprobación/cambio.
 Esto ocurre de forma inmediata, sin esperas ni intervención manual (excepto si el admin lo desea).
+
+## Propuesta para los turnos de vacaciones
+- T1 tiene que permitir un minimo de 2 empleados, esto implica que pueden haber 5 personas de vacaciones en temporada alta o varias personas disfrutando de vacaciones mientras se sigue poder otorgar dias libres por bajas médicas, emergencias o asuntos personales.
+- T2 sigue intacto con un minimo de 2 personas.
+
+Esto permite que de los 9 empleados haya aun minimo de 4 personas trabajando en todo momento. 
