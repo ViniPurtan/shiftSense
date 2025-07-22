@@ -208,4 +208,13 @@ class ShiftService {
     // Regenerate current week shift
     await generateShiftForWeek(normalizedWeekStart);
   }
+
+  Future<void> regenerateShiftsForVacation(DateTime startDate, DateTime endDate) async {
+    var currentWeek = _getWeekStart(startDate);
+    final lastWeek = _getWeekStart(endDate);
+    while (!currentWeek.isAfter(lastWeek)) {
+      await regenerateShiftsFromWeek(currentWeek);
+      currentWeek = currentWeek.add(const Duration(days: 7));
+    }
+  }
 }
