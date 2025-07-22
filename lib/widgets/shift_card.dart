@@ -104,7 +104,7 @@ class ShiftCard extends StatelessWidget {
                     child: _buildShiftGroup(
                       context,
                       'TURNO T1',
-                      '7 personas',
+                      '${shift.t1Members.length} personas',
                       shift.t1Members,
                       Theme.of(context).colorScheme.secondary,
                       Icons.groups_outlined,
@@ -116,7 +116,7 @@ class ShiftCard extends StatelessWidget {
                     child: _buildShiftGroup(
                       context,
                       'TURNO T2',
-                      '2 personas',
+                      '${shift.t2Members.length} personas',
                       shift.t2Members,
                       Theme.of(context).colorScheme.tertiary,
                       Icons.star_outline,
