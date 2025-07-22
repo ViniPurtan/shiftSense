@@ -394,7 +394,7 @@ class _VacationScreenState extends State<VacationScreen> {
         if (!canTake && mounted && result.type != VacationType.sick && result.type != VacationType.emergency) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text('Advertencia: No hay suficientes empleados disponibles para cubrir los turnos en estas fechas. La solicitud será registrada pero podría ser rechazada.'),
+              content: const Text('Advertencia: Puede que no haya suficiente personal para los turnos en estas fechas. El sistema intentará aprobar tu solicitud según la disponibilidad y el orden de llegada.'),
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
           );
