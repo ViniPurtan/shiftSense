@@ -205,7 +205,7 @@ class DataService {
           changed = true;
           keepTrying = true;
           await saveVacations(vacations); // Actualizar almacenamiento y memoria
-          await shiftService.regenerateShiftsFromWeek(v.startDate);
+          await shiftService.regenerateShiftsForVacation(v.startDate, v.endDate); // Regenerar todas las semanas afectadas
           vacations = await getVacations(); // Recargar lista actualizada
         }
       }
@@ -226,6 +226,7 @@ class DataService {
           requestDate: v.requestDate,
         );
         changed = true;
+        await shiftService.regenerateShiftsForVacation(v.startDate, v.endDate); // También regenerar si se rechaza
       }
     }
     if (changed) {
