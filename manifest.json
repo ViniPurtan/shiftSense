@@ -1,0 +1,35 @@
+{
+    "name": "ShiftSense - Gestión de Turnos",
+    "short_name": "ShiftSense",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#6750A4",
+    "theme_color": "#6750A4",
+    "description": "Sistema de gestión de turnos y vacaciones para equipos de trabajo.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
